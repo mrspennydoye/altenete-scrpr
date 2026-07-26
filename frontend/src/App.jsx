@@ -14,6 +14,7 @@ import HealthCheck from './pages/HealthCheck';
 import AdminLogs from './pages/AdminLogs';
 import Scheduler from './pages/Scheduler';
 import CardValidator from './pages/CardValidator';
+import TopicScraper from './pages/TopicScraper';
 import useStore from './store/useStore';
 
 function PrivateRoute({ children }) {
@@ -186,6 +187,14 @@ export default function App() {
           element={
             <PrivateRoute>
               <CardValidator />
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/topic-scraper" 
+          element={
+            <PrivateRoute>
+              <TopicScraper />
             </PrivateRoute>
           } 
         />

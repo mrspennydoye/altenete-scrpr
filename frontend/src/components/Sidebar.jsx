@@ -12,6 +12,7 @@ import {
   Calendar,
   Database,
   CreditCard,
+  Download,
 } from 'lucide-react';
 import useStore from '../store/useStore';
 
@@ -26,6 +27,7 @@ export default function Sidebar() {
     { name: 'Scraped Threads', path: '/threads',         icon: FileText },
     { name: 'Post Content',    path: '/posts',           icon: Database },
     { name: 'Card Validator',  path: '/card-validator',  icon: CreditCard },
+    { name: 'Topic CC Scraper', path: '/topic-scraper',   icon: Download },
     { name: 'Health Check',    path: '/health',          icon: Activity },
     { name: 'Admin Logs',      path: '/logs',            icon: Terminal },
     { name: 'Settings',        path: '/settings',        icon: SettingsIcon },

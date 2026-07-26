@@ -205,6 +205,7 @@ from app.api.admin_logs import router as admin_logs_router
 from app.api.repeating_jobs import router as watches_router
 from app.api.telegram import router as telegram_router
 from app.api.cards import router as cards_router
+from app.api.topic_scraper import router as topic_scraper_router
 
 app.include_router(auth_router)
 app.include_router(jobs_router)
@@ -215,6 +216,7 @@ app.include_router(admin_logs_router)
 app.include_router(watches_router)
 app.include_router(telegram_router)
 app.include_router(cards_router)
+app.include_router(topic_scraper_router)
 
 
 @app.get("/api/health", tags=["Health"])

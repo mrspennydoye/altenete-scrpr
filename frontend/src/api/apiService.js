@@ -249,6 +249,38 @@ const apiService = {
     const res = await client.get('/api/cards/bulk-validate/latest');
     return res.data; // { job_id, status, total, processed, failed, created_at }
   },
+
+  // Topic CC Scraper — scrape all posts in a topic, extract cards
+  async startTopicScrape(thread_url, config_id) {
+    const res = await client.post('/api/topic-scrape/start', { thread_url, config_id });
+    return res.data; // { job_id, status }
+  },
+
+  async getTopicScrapeStatus(jobId) {
+    const res = await client.get(`/api/topic-scrape/${jobId}/status`);
+    return res.data;
+  },
+
+  getTopicScrapeWsUrl(jobId) {
+    const token = localStorage.getItem('token') || '';
+    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const host = window.location.host;
+    return `${proto}://${host}/api/topic-scrape/${jobId}/ws?token=${encodeURIComponent(token)}`;
+  },
+
+  getTopicScrapeDownloadUrl(jobId) {
+    return `/api/topic-scrape/${jobId}/download`;
+  },
+
+  async downloadTopicCards(jobId) {
+    const res = await client.get(`/api/topic-scrape/${jobId}/download`, { responseType: 'blob' });
+    return res.data;
+  },
+
+  async sendTopicCardsToTelegram(jobId) {
+    const res = await client.post(`/api/topic-scrape/${jobId}/send-telegram`);
+    return res.data;
+  },
 };
 
 export default apiService;

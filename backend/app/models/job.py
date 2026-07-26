@@ -20,6 +20,7 @@ class JobType(str, PyEnum):
     FULL_RUN = "full_run"
     CHECK_NEW = "check_new"
     VALIDATE_CARDS = "validate_cards"
+    TOPIC_CC_SCRAPE = "topic_cc_scrape"
 
 
 class JobStatus(str, PyEnum):
